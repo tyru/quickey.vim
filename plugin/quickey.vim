@@ -50,9 +50,9 @@ nnoremap <Plug>(quickey:tabwinmerge:win:to-right) :<C-u>call quickey#tabwinmerge
 nnoremap <Plug>(quickey:tabwinmerge:win:to-input-nr) :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), str2nr(input('tab number:')))<CR>
 
 if !g:quickey_no_default_tabwinmerge_keymappings
-    nmap <Space>mh <Plug>(quickey:tabwinmerge:tab:to-left)
-    nmap <Space>ml <Plug>(quickey:tabwinmerge:tab:to-right)
-    nmap <Space>m  <Plug>(quickey:tabwinmerge:tab:to-input-nr)
+    nmap <Space>mh <Plug>(quickey:tabwinmerge:win:to-left)
+    nmap <Space>ml <Plug>(quickey:tabwinmerge:win:to-right)
+    nmap <Space>m  <Plug>(quickey:tabwinmerge:win:to-input-nr)
 endif
 " }}}
 
