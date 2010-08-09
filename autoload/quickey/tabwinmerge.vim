@@ -40,14 +40,53 @@ function! quickey#tabwinmerge#tab_to_tab(from_tabpagenr, to_tabpagenr, ...) "{{{
     execute 'tabclose' a:from_tabpagenr
 endfunction "}}}
 
-" TODO
-function! quickey#tabwinmerge#win_to_tab() "{{{
+function! quickey#tabwinmerge#win_to_tab(from_winnr, to_tabpagenr, ...) "{{{
+    let create_tab = a:0 ? a:1 : 1
+
+    let from_exists = s:exists_win(a:from_winnr)
+    if !from_exists
+        return
+    endif
+    let to_exists = s:exists_tab(a:to_tabpagenr)
+    if !create_tab && !to_exists
+        return
+    endif
+
+
+    let from_tabpagenr = tabpagenr()
+    let buflist = tabpagebuflist(from_tabpagenr)
+    if winnr('$') == 1
+        return call('quickey#tabwinmerge#tab_to_tab', [from_tabpagenr, a:to_tabpagenr] + a:000)
+    endif
+
+    call s:close_win(a:from_winnr)
+    execute 'tabnext' a:to_tabpagenr
+
+    split
+    execute buflist[a:from_winnr - 1] 'buffer'
 endfunction "}}}
 
 
 
 function! s:exists_tab(tabpagenr) "{{{
     return 1 <= a:tabpagenr && a:tabpagenr <= tabpagenr('$')
+endfunction "}}}
+
+function! s:exists_win(winnr) "{{{
+    return 1 <= a:winnr && a:winnr <= winnr('$')
+endfunction "}}}
+
+function! s:close_win(winnr) "{{{
+    let curwinnr = winnr()
+    call s:jump_to_win(a:winnr)
+    close
+    call s:jump_to_win(curwinnr)
+endfunction "}}}
+
+function! s:jump_to_win(winnr) "{{{
+    if winnr() != a:winnr
+        execute a:winnr 'wincmd w'
+    endif
 endfunction "}}}
 
 
