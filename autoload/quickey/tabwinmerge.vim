@@ -43,12 +43,13 @@ endfunction "}}}
 function! quickey#tabwinmerge#win_to_tab(from_winnr, to_tabpagenr, ...) "{{{
     let create_tab = a:0 ? a:1 : 0
 
-    let from_exists = s:exists_win(a:from_winnr)
-    if !from_exists
+    if !s:exists_win(a:from_winnr)
         return
     endif
-    let to_exists = s:exists_tab(a:to_tabpagenr)
-    if !create_tab && !to_exists
+    if a:to_tabpagenr <= 0
+        return
+    endif
+    if !create_tab && !s:exists_tab(a:to_tabpagenr)
         return
     endif
 
