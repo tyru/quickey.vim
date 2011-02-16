@@ -36,17 +36,17 @@ function! s:modulo(n, m) "{{{
 endfunction "}}}
 
 function! s:swap_window(curwin, targetwin) "{{{
-  let curbuf = winbufnr(a:curwin)
-  let targetbuf = winbufnr(a:targetwin)
+    let curbuf = winbufnr(a:curwin)
+    let targetbuf = winbufnr(a:targetwin)
 
-  if curbuf == targetbuf
-    " TODO: Swap also same buffer!
-  else
-    execute 'hide' targetbuf . 'buffer'
-    execute a:targetwin 'wincmd w'
-    execute curbuf 'buffer'
-    " wincmd p    " Behave like <C-w>x ?
-  endif
+    if curbuf == targetbuf
+        " TODO: Swap also same buffer!
+    else
+        execute 'hide' targetbuf . 'buffer'
+        execute a:targetwin 'wincmd w'
+        execute curbuf 'buffer'
+        " wincmd p    " Behave like <C-w>x ?
+    endif
 endfunction "}}}
 
 
