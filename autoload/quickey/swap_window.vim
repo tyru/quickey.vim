@@ -36,6 +36,11 @@ function! s:modulo(n, m) "{{{
 endfunction "}}}
 
 function! s:swap_window(curwin, targetwin) "{{{
+    if winnr('$') == 1
+        echoerr 'no other window(s) to swap.'
+        return
+    endif
+
     let curbuf = winbufnr(a:curwin)
     let targetbuf = winbufnr(a:targetwin)
 
