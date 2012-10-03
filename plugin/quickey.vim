@@ -25,6 +25,7 @@ function! s:init_vars() "{{{
     \   ['g:quickey_no_default_swap_window_keymappings', 0],
     \   ['g:quickey_no_default_merge_window_keymappings', 0],
     \   ['g:quickey_no_default_split_keymappings', 0],
+    \   ['g:quickey_no_default_new_keymappings', 0],
     \]
         " Currently, 0 is default values to all "no default" variables.
         call s:def(varname, g:quickey_no_default_all_keymappings ? 1 : value)
@@ -144,6 +145,28 @@ if !g:quickey_no_default_split_keymappings
     nmap <Space>sk <Plug>(quickey:split:to-up)
     nmap <Space>sh <Plug>(quickey:split:to-left)
     nmap <Space>sl <Plug>(quickey:split:to-right)
+endif
+" }}}
+
+" new {{{
+    nnoremap <silent>
+    \   <Plug>(quickey:new:to-down)
+    \   :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'new'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:new:to-up)
+    \   :<C-u>execute 'aboveleft' (v:count == 0 ? '' : v:count) 'new'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:new:to-left)
+    \   :<C-u>execute 'aboveleft' (v:count == 0 ? '' : v:count) 'vnew'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:new:to-right)
+    \   :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'vnew'<CR>
+
+if !g:quickey_no_default_new_keymappings
+    nmap <Space>ej <Plug>(quickey:new:to-down)
+    nmap <Space>ek <Plug>(quickey:new:to-up)
+    nmap <Space>eh <Plug>(quickey:new:to-left)
+    nmap <Space>el <Plug>(quickey:new:to-right)
 endif
 " }}}
 
