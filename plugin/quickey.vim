@@ -24,7 +24,7 @@ function! s:init_vars() "{{{
     \   ['g:quickey_no_default_tabwinmerge_keymappings', 0],
     \   ['g:quickey_no_default_swap_window_keymappings', 0],
     \   ['g:quickey_no_default_merge_window_keymappings', 0],
-    \   ['g:quickey_no_default_split_nicely_keymappings', 0],
+    \   ['g:quickey_no_default_split_keymappings', 0],
     \]
         " Currently, 0 is default values to all "no default" variables.
         call s:def(varname, g:quickey_no_default_all_keymappings ? 1 : value)
@@ -125,17 +125,25 @@ if !g:quickey_no_default_merge_window_keymappings
 endif
 " }}}
 
-" split-nicely {{{
-    nnoremap <silent> <Plug>(quickey:split-nicely:to-down) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
-    nnoremap <silent> <Plug>(quickey:split-nicely:to-up) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
-    nnoremap <silent> <Plug>(quickey:split-nicely:to-left) :<C-u>execute 'aboveleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
-    nnoremap <silent> <Plug>(quickey:split-nicely:to-right) :<C-u>execute 'belowright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+" split {{{
+    nnoremap <silent>
+    \   <Plug>(quickey:split:to-down)
+    \   :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:split:to-up)
+    \   :<C-u>execute 'aboveleft' (v:count == 0 ? '' : v:count) 'split'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:split:to-left)
+    \   :<C-u>execute 'aboveleft' (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+    nnoremap <silent>
+    \   <Plug>(quickey:split:to-right)
+    \   :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'vsplit'<CR>
 
-if !g:quickey_no_default_split_nicely_keymappings
-    nmap <Space>sj <Plug>(quickey:split-nicely:to-down)
-    nmap <Space>sk <Plug>(quickey:split-nicely:to-up)
-    nmap <Space>sh <Plug>(quickey:split-nicely:to-left)
-    nmap <Space>sl <Plug>(quickey:split-nicely:to-right)
+if !g:quickey_no_default_split_keymappings
+    nmap <Space>sj <Plug>(quickey:split:to-down)
+    nmap <Space>sk <Plug>(quickey:split:to-up)
+    nmap <Space>sh <Plug>(quickey:split:to-left)
+    nmap <Space>sl <Plug>(quickey:split:to-right)
 endif
 " }}}
 
