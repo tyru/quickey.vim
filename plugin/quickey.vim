@@ -24,7 +24,6 @@ function! s:init_vars() "{{{
     \   ['g:quickey_no_default_tabwinmerge_keymappings', 0],
     \   ['g:quickey_no_default_swap_window_keymappings', 0],
     \   ['g:quickey_no_default_merge_window_keymappings', 0],
-    \   ['g:quickey_merge_window_hide_vim_window_move_cursor', 0],
     \   ['g:quickey_no_default_split_nicely_keymappings', 0],
     \]
         " Currently, 0 is default values to all "no default" variables.
@@ -119,17 +118,10 @@ nnoremap <silent>
 \   :<C-u>call quickey#merge_window#merge('l', 'L', 0)<CR>
 
 if !g:quickey_no_default_merge_window_keymappings
-    if g:quickey_merge_window_hide_vim_window_move_cursor
-        nmap <C-w>j <Plug>(quickey:merge-window:to-down)
-        nmap <C-w>k <Plug>(quickey:merge-window:to-up)
-        nmap <C-w>h <Plug>(quickey:merge-window:to-left)
-        nmap <C-w>l <Plug>(quickey:merge-window:to-right)
-    else
-        nmap <Space>j <Plug>(quickey:merge-window:to-down)
-        nmap <Space>k <Plug>(quickey:merge-window:to-up)
-        nmap <Space>h <Plug>(quickey:merge-window:to-left)
-        nmap <Space>l <Plug>(quickey:merge-window:to-right)
-    endif
+    nmap <Space>J <Plug>(quickey:merge-window:to-down)
+    nmap <Space>K <Plug>(quickey:merge-window:to-up)
+    nmap <Space>H <Plug>(quickey:merge-window:to-left)
+    nmap <Space>L <Plug>(quickey:merge-window:to-right)
 endif
 " }}}
 
