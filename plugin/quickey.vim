@@ -41,13 +41,25 @@ delfunc s:init_vars
 
 
 " tabwinmerge {{{
-nnoremap <Plug>(quickey:tabwinmerge:tab:to-left) :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), tabpagenr() - 1)<CR>
-nnoremap <Plug>(quickey:tabwinmerge:tab:to-right) :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), tabpagenr() + 1)<CR>
-nnoremap <Plug>(quickey:tabwinmerge:tab:to-input-nr) :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), str2nr(input('tab number:')))<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:tab:to-left)
+\   :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), tabpagenr() - 1)<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:tab:to-right)
+\   :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), tabpagenr() + 1)<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:tab:to-input-nr)
+\   :<C-u>call quickey#tabwinmerge#tab_to_tab(tabpagenr(), str2nr(input('tab number:')))<CR>
 
-nnoremap <Plug>(quickey:tabwinmerge:win:to-left) :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), tabpagenr() - 1)<CR>
-nnoremap <Plug>(quickey:tabwinmerge:win:to-right) :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), tabpagenr() + 1)<CR>
-nnoremap <Plug>(quickey:tabwinmerge:win:to-input-nr) :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), str2nr(input('tab number:')))<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:win:to-left)
+\   :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), tabpagenr() - 1)<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:win:to-right)
+\   :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), tabpagenr() + 1)<CR>
+nnoremap
+\   <Plug>(quickey:tabwinmerge:win:to-input-nr)
+\   :<C-u>call quickey#tabwinmerge#win_to_tab(winnr(), str2nr(input('tab number:')))<CR>
 
 if !g:quickey_no_default_tabwinmerge_keymappings
     nmap <Space>mh <Plug>(quickey:tabwinmerge:win:to-left)
@@ -57,14 +69,30 @@ endif
 " }}}
 
 " swap-window {{{
-nnoremap <silent> <Plug>(quickey:swap-window:to-next) :<C-u>call quickey#swap_window#swap_with_count(v:count1)<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-prev) :<C-u>call quickey#swap_window#swap_with_count(-v:count1)<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-down) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'j')<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-up) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'k')<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-left) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'h')<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-right) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'l')<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-top) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 't')<CR>
-nnoremap <silent> <Plug>(quickey:swap-window:to-bottom) :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'b')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-next)
+\   :<C-u>call quickey#swap_window#swap_with_count(v:count1)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-prev)
+\   :<C-u>call quickey#swap_window#swap_with_count(-v:count1)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-down)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'j')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-up)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'k')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-left)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'h')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-right)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'l')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-top)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 't')<CR>
+nnoremap <silent>
+\   <Plug>(quickey:swap-window:to-bottom)
+\   :<C-u>call quickey#swap_window#swap_with_wincmd(v:count1, 'b')<CR>
 
 if !g:quickey_no_default_swap_window_keymappings
     nmap <Space><C-n> <Plug>(quickey:swap-window:to-next)
@@ -77,10 +105,18 @@ endif
 " }}}
 
 " merge-window {{{
-nnoremap <silent> <Plug>(quickey:merge-window:to-down) :<C-u>call quickey#merge_window#merge('j', 'J', 1)<CR>
-nnoremap <silent> <Plug>(quickey:merge-window:to-up) :<C-u>call quickey#merge_window#merge('k', 'K', 1)<CR>
-nnoremap <silent> <Plug>(quickey:merge-window:to-left) :<C-u>call quickey#merge_window#merge('h', 'H', 0)<CR>
-nnoremap <silent> <Plug>(quickey:merge-window:to-right) :<C-u>call quickey#merge_window#merge('l', 'L', 0)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:merge-window:to-down)
+\   :<C-u>call quickey#merge_window#merge('j', 'J', 1)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:merge-window:to-up)
+\   :<C-u>call quickey#merge_window#merge('k', 'K', 1)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:merge-window:to-left)
+\   :<C-u>call quickey#merge_window#merge('h', 'H', 0)<CR>
+nnoremap <silent>
+\   <Plug>(quickey:merge-window:to-right)
+\   :<C-u>call quickey#merge_window#merge('l', 'L', 0)<CR>
 
 if !g:quickey_no_default_merge_window_keymappings
     if g:quickey_merge_window_hide_vim_window_move_cursor
