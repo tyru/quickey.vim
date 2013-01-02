@@ -47,9 +47,12 @@ function! s:swap_window(curwin, targetwin) "{{{
     if curbuf == targetbuf
         " TODO: Swap also same buffer!
     else
+        let save_bufhidden = &l:bufhidden
+        let &l:bufhidden = 'hide'
         execute 'hide' targetbuf . 'buffer'
         execute a:targetwin 'wincmd w'
         execute curbuf 'buffer'
+        let &l:bufhidden = save_bufhidden
         " wincmd p    " Behave like <C-w>x ?
     endif
 endfunction "}}}
